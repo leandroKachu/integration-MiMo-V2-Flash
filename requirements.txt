@@ -2,3 +2,5 @@ fastapi
 uvicorn[standard]
 openai>=1.0.0
 dotenv
+tavily
+google-genai==1.57.0

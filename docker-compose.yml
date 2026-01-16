@@ -3,8 +3,6 @@ services:
     image: gtxmonstrio/llm-mimo:latest
     ports:
       - "9090:9000"
-    volumes:
-      - ./data:/app/data
     env_file:
       - .env
     restart: unless-stopped

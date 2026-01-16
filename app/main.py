@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI
 from pydantic import BaseModel
 from contextlib import asynccontextmanager
 from typing import List, Optional
@@ -41,14 +41,16 @@ class AskRequest(BaseModel):
     
 @app.post("/ask")
 def ask(payload: AskRequest):
+    print(payload)
     question = get_user_question(payload.messages)
     if not question:
         return {"response": "Nenhuma pergunta encontrada."}
 
-    answer = ask_llm(question)
+    answer = ask_llm(question, payload.name)
     return answer
 
 def get_user_question(messages: list[Message]) -> str | None:
+    print(messages)
     for msg in reversed(messages):
         if msg.role == "user" and msg.content.strip():
             return msg.content
