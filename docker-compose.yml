@@ -1,6 +1,6 @@
 services:
   rag:
-    image: gtxmonstrio/llm-mimo:latest
+    image: alter-isso/rag:latest
     ports:
       - "9090:9000"
     env_file:
